@@ -1,0 +1,81 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira sans', sans-serif;
+}
+body {
+    background: #718096;
+    color: #FFF;
+}
+
+.container {
+    max-width: 780px;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titlebar {
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.titlebar_item,h1,button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    border:1px solid #6a727a;
+    padding: 9px 15px;
+    border-radius: 4px;
+    background: #FFF;
+    color: black;
+    cursor: pointer;
+}
+
+.list_header {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    color: #6a727a;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #e0e0e0;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 1.2rem;
+    margin-top: 20px;
+    background-color: #FFF;
+    grid-auto-flow: column;
+}
+
+.list_items {
+    padding: 10px 30px !important;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    color: #6a727a;
+    background-color: #f1f1f1;
+    grid-auto-flow: column;
+}
+
+.btn-icon {
+    border: 1px solid #e0e0e0;
+    background: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    color: #6a727a;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background: red;
+    color: white;
+}
