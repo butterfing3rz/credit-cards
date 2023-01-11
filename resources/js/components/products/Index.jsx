@@ -19,7 +19,6 @@ const Index = () => {
                         <p>Void Charge</p>
                     </div>
                     <div className="list_items">
-                        {/*<img src="" height="40px" />*/}
                         <a>Today</a>
                         <a>1234</a>
                         <a>Tomorrow</a>
