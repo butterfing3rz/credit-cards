@@ -1,6 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Index = () => {
+
+    const [cardNum, setCardNum] = useState("")
+    const [month, setMonth] = useState("")
+    const [year, setYear] = useState("")
+
+    const createCard = async (e) => {
+        e.preventDefault()
+
+        const formData = new FormData()
+
+        formData.append('cardNum', cardNum)
+        formData.append('month', month)
+        formData.append('year', year)
+
+        await axios.post("/api/add_card", formData)
+            .then(({data})=> {
+                toast.fire({
+                    icon:"success",
+                    title: "Card Added Successfully"
+                })
+            })
+            .catch(({response})=> {
+
+            })
+    }
+
+
     return(
         <div className='container'>
             <div className="cards_list">
@@ -43,12 +70,12 @@ const Index = () => {
 
                 <div className="inputs">
                     <p>Card Number</p>
-                    <input type="text" />
+                    <input type="text" value={cardNum} onChange={(event)=>{setCardNum(event.target.value)}}/>
 
                     <br></br><br></br>
 
                     <p>Expiration Date</p>
-                        <select>
+                        <select value={month} onChange={(event)=>setMonth(event.target.value)}>
                             <option value="Month">Month</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
@@ -64,7 +91,7 @@ const Index = () => {
                             <option value="12">12</option>
                         </select>
 
-                        <select>
+                        <select value={year} onChange={(event)=>setYear(event.target.value)}>
                             <option value="Year">Year</option>
                             <option value="23">23</option>
                             <option value="24">24</option>
@@ -78,7 +105,7 @@ const Index = () => {
                     <br></br><br></br>
 
                     <div className="titlebar_item">
-                        <div className="btn">
+                        <div className="btn" onClick={(event)=>createCard(event)}>
                             Add Card
                         </div>
                     </div>

@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/add_card', [\App\Http\Controllers\CreditCardController::class, 'add_card']);
