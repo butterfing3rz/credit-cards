@@ -19,3 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/add_card', [\App\Http\Controllers\CreditCardController::class, 'add_card']);
+Route::get('/get_all_card', [\App\Http\Controllers\CreditCardController::class, 'get_all_card']);
+Route::get('/delete_card/{id}', [\App\Http\Controllers\CreditCardController::class, 'delete_card']);

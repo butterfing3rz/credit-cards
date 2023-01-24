@@ -1,6 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Swal from "sweetalert2";
 
 const Index = () => {
+
+    // delete portion
+    const deleteCard = async (id) => {
+        Swal.fire({
+            title: 'Are your sure?',
+            text: "You won't be able to undo this action",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                   axios.get('/api/delete_card'+id)
+                       .then(()=>{
+                           Swal.fire(
+                               'Deleted!',
+                               'Card successfully deleted',
+                               'success'
+                           )
+                           getCards()
+                       })
+                       .catch(()=>{
+                            Swal.fire(
+                                'Error'
+                            )
+                       })
+                }
+            })
+    }
+
+
+    // adding card to table portion
+    const [cards, setCards] = useState([])
+
+    // useEffect portion
+    useEffect(()=>{
+        getCards()
+    },[])
+
+    const getCards = async () => {
+        await axios.get("/api/get_all_card")
+            .then(({data})=> {
+                setCards(data.cards)
+        })
+    }
+
+
+    // create a card component
+    // currently can add cards but need to refresh the page for them to show up
+    // TODO: fix the above and also add in more than just cardNum
 
     const [cardNum, setCardNum] = useState("")
     const [month, setMonth] = useState("")
@@ -27,7 +80,7 @@ const Index = () => {
             })
     }
 
-
+    // HTML components
     return(
         <div className='container'>
             <div className="cards_list">
@@ -45,17 +98,23 @@ const Index = () => {
                         <p>Authorization Code</p>
                         <p>Void Charge</p>
                     </div>
-                    <div className="list_items">
-                        <a>Today</a>
-                        <a>1234</a>
-                        <a>Tomorrow</a>
-                        <a>6789</a>
-                        <div>
-                            <button className="btn-icon delete">
-                                <i className="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
+                    {
+                        cards.length > 0 && (
+                            cards.map((item, key)=>(
+                                <div className="list_items" key={key}>
+                                    <a>{item.id}</a>
+                                    <a>{item.cardNum}</a>
+                                    <a>Tomorrow</a>
+                                    <a>6789</a>
+                                    <div>
+                                        <button className="btn-icon delete" onClick={()=>deleteCard(item.id)}>
+                                            <i className="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            ))
+                        )
+                    }
                 </div>
             </div>
 
