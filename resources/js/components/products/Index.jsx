@@ -16,7 +16,7 @@ const Index = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                   axios.get('/api/delete_card'+id)
+                   axios.get('/api/delete_card/'+id)
                        .then(()=>{
                            Swal.fire(
                                'Deleted!',
@@ -74,6 +74,7 @@ const Index = () => {
                     icon:"success",
                     title: "Card Added Successfully"
                 })
+                getCards()
             })
             .catch(({response})=> {
 
