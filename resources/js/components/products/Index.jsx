@@ -18,11 +18,10 @@ const Index = () => {
                 if (result.isConfirmed) {
                    axios.get('/api/delete_card/'+id)
                        .then(()=>{
-                           Swal.fire(
-                               'Deleted!',
-                               'Card successfully deleted',
-                               'success'
-                           )
+                           toast.fire({
+                               icon:"error",
+                               title: "Card Deleted Successfully"
+                           })
                            getCards()
                        })
                        .catch(()=>{
@@ -103,10 +102,10 @@ const Index = () => {
                         cards.length > 0 && (
                             cards.map((item, key)=>(
                                 <div className="list_items" key={key}>
-                                    <a>{item.id}</a>
+                                    <a>{item.chargeDate}</a>
                                     <a>{item.cardNum}</a>
-                                    <a>Tomorrow</a>
-                                    <a>6789</a>
+                                    <a>{item.expDate}</a>
+                                    <a>{item.authCode}</a>
                                     <div>
                                         <button className="btn-icon delete" onClick={()=>deleteCard(item.id)}>
                                             <i className="far fa-trash-alt"></i>
@@ -137,15 +136,15 @@ const Index = () => {
                     <p>Expiration Date</p>
                         <select value={month} onChange={(event)=>setMonth(event.target.value)}>
                             <option value="Month">Month</option>
-                            <option value="1">01</option>
-                            <option value="2">02</option>
-                            <option value="3">03</option>
-                            <option value="4">04</option>
-                            <option value="5">05</option>
-                            <option value="6">06</option>
-                            <option value="7">07</option>
-                            <option value="8">08</option>
-                            <option value="9">09</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
                             <option value="10">10</option>
                             <option value="11">11</option>
                             <option value="12">12</option>

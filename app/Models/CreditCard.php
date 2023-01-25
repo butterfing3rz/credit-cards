@@ -10,8 +10,4 @@ use Illuminate\Database\Eloquent\Model;
 class CreditCard extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'cardNum',
-    ];
 }

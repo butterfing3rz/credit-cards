@@ -12,7 +12,23 @@ class CreditCardController extends Controller
     public function add_card(Request $request) {
         $card = new CreditCard();
 
+        // card number
         $card->cardNum = $request->cardNum;
+
+        // expiration date
+        $card->expDate = ($request->month).'/'.($request->year);
+
+        // authorization code
+        $authorizationCode = '';
+        for ($i = 0; $i < 6; $i++) {
+            $authorizationCode .= rand(0,9);
+        }
+        $card->authCode = $authorizationCode;
+
+        // charge date
+        date_default_timezone_set("America/Los_Angeles");
+        $card->chargeDate = date("m/d/y", time());
+
         $card->save();
     }
 
