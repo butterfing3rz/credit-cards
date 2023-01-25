@@ -51,9 +51,6 @@ const Index = () => {
 
 
     // create a card component
-    // currently can add cards but need to refresh the page for them to show up
-    // TODO: fix the above and also add in more than just cardNum
-
     const [cardNum, setCardNum] = useState("")
     const [month, setMonth] = useState("")
     const [year, setYear] = useState("")
@@ -76,7 +73,11 @@ const Index = () => {
                 getCards()
             })
             .catch(({response})=> {
-
+                Swal.fire(
+                    "Error",
+                    "Invalid or Expired Card",
+                    "warning"
+                )
             })
     }
 
