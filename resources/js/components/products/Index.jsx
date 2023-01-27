@@ -6,7 +6,7 @@ const Index = () => {
     // delete portion
     const deleteCard = async (id) => {
         Swal.fire({
-            title: 'Are your sure?',
+            title: 'Are you sure?',
             text: "You won't be able to undo this action",
             icon: 'warning',
             showCancelButton: true,
@@ -87,7 +87,7 @@ const Index = () => {
             <div className="cards_list">
                 <div className="titlebar">
                     <div className="titlebar_item">
-                        <h1>Credit Cards</h1>
+                        <h1>Charged Cards</h1>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@ const Index = () => {
             <div className="cards_create">
                 <div className="titlebar">
                     <div className="titlebar_item">
-                        <h1>Add a Card</h1>
+                        <h1>Charge a Card</h1>
                     </div>
                 </div>
 
@@ -166,7 +166,7 @@ const Index = () => {
 
                     <div className="titlebar_item">
                         <div className="btn" onClick={(event)=>createCard(event)}>
-                            Add Card
+                            Charge Card
                         </div>
                     </div>
                 </div>
