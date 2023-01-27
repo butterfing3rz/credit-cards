@@ -40,6 +40,7 @@ const Index = () => {
         getCards()
     },[])
 
+    // renders everything
     const getCards = async () => {
         await axios.get("/api/get_all_card")
             .then(({data})=> {
