@@ -10,8 +10,8 @@ use App\Models\CreditCard;
 class CreditCardController extends Controller {
 
     public function add_card(Request $request) {
-        // make sure month and year are valid
-        if (is_null($request->month) || is_null($request->year)) {
+        // make sure nothing is blank
+        if (is_null($request->month) || is_null($request->year) || is_null($request->cardNum)) {
             throw new InvalidArgumentException();
         }
 
