@@ -123,7 +123,7 @@ const Index = () => {
 
             <div className="cards_create">
                 <div className="titlebar">
-                    <div className="titlebar_item">
+                    <div className="titlebar_item2">
                         <h1>Charge a Card</h1>
                     </div>
                 </div>
