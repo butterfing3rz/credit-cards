@@ -34,10 +34,8 @@ const Index = () => {
     }
 
 
-    // adding card to table portion
     const [cards, setCards] = useState([])
 
-    // useEffect portion
     useEffect(()=>{
         getCards()
     },[])
